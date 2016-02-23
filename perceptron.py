@@ -26,3 +26,6 @@ while inputLine:
 
 	inputLine = trainingData.readline()[:-1]
 
+with open("weights.txt", "w") as weights:
+	for i in range(num_nodes):
+		weights.writeline(weight[i])
