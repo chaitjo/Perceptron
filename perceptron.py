@@ -1,10 +1,12 @@
 import sys
+train = True
 test = False
-train = False
-if  sys.argv[1] == 'test' : test = True
-esle if sys.argv[1] == 'train' : train = True
+if len(sys.argv) >= 2 and sys.argv[1] == 'test' : 
+	test = True
+	train = False
 
-trainingData = open("training.txt", "r")
+if test: data = open("testingData.txt", "r")
+else: data = open("trainingData.txt", "r")
 
 with open("constants.txt", "r") as constants:
 	num_nodes = int(constants.readline()[:-1])
@@ -24,11 +26,13 @@ except IOError:
 	for i in range(num_nodes):
 		weight.append(1.0)
 
-inputLine = trainingData.readline()
+inputLine = data.readline()
 while inputLine:
 	inputLine = inputLine[:-1].split()
-	inputNodes = inputLine[:-1]
-	outputNode = inputLine[-1]
+	if test: inputNodes = inputLine
+	else:
+		inputNodes = inputLine[:-1]
+		outputNode = inputLine[-1]
 
 	# Weighted Sum function
 	wSum = -bias_factor
@@ -39,14 +43,25 @@ while inputLine:
 	if wSum >= 0 : prediction = 1
 	else : prediction = -1
 
-	# Weight update rule - gradient descent method
-	for i in range(num_nodes):
-		weight[i] += learn_rate * (int(outputNode) - prediction) * int(inputNodes[i])
+	if train:
+		# Weight update rule
+		# based on gradient descent method
+		for i in range(num_nodes):
+			weight[i] += learn_rate * (int(outputNode) - prediction) * int(inputNodes[i])
 
-	inputLine = trainingData.readline()
+	if test:
+		# Writing prediction to output file
+		with open("output.txt", "a") as output:
+			for i in range(num_nodes):
+				output.write(str(inputNodes[i]) + ' ')
+			output.write(str(prediction) + '\n')
 
-with open("weights.txt", "w") as weights:
-	for i in range(num_nodes):
-		weights.write(str(weight[i])+'\n')
+	inputLine = data.readline()
 
-trainingData.close()
+if train:
+	# Writing updated weights to weights.txt
+	with open("weights.txt", "w") as weights:
+		for i in range(num_nodes):
+			weights.write(str(weight[i])+'\n')
+
+data.close()
