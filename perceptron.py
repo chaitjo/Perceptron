@@ -5,10 +5,10 @@ if len(sys.argv) >= 2 and sys.argv[1] == 'test' :
 	test = True
 	train = False
 
-if test: data = open("testingData.txt", "r")
-else: data = open("trainingData.txt", "r")
+if test: data = open("res/testingData.txt", "r")
+else: data = open("res/trainingData.txt", "r")
 
-with open("constants.txt", "r") as constants:
+with open("res/constants.txt", "r") as constants:
 	num_nodes = int(constants.readline()[:-1])
 	bias_factor = float(constants.readline()[:-1])
 	learn_rate = float(constants.readline()[:-1])
@@ -17,7 +17,7 @@ weight = []
 inputNodes = []
 
 try:
-	with open("weights.txt", "r") as weights:
+	with open("res/weights.txt", "r") as weights:
 		inputWeight = weights.readline()
 		while inputWeight:
 			weight.append(float(inputWeight[:-1]))
@@ -51,7 +51,7 @@ while inputLine:
 
 	if test:
 		# Writing prediction to output file
-		with open("output.txt", "a") as output:
+		with open("res/output.txt", "a") as output:
 			for i in range(num_nodes):
 				output.write(str(inputNodes[i]) + ' ')
 			output.write(str(prediction) + '\n')
@@ -60,7 +60,7 @@ while inputLine:
 
 if train:
 	# Writing updated weights to weights.txt
-	with open("weights.txt", "w") as weights:
+	with open("res/weights.txt", "w") as weights:
 		for i in range(num_nodes):
 			weights.write(str(weight[i])+'\n')
 
