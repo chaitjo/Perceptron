@@ -1,31 +1,43 @@
 trainingData = open("training.txt", "r")
 
-num_nodes = 2		# TODO : function to find this out
-bias_factor = 1
-learn_rate = 0.5
+with open("constants.txt", "r") as constants:
+	num_nodes = int(constants.readline()[:-1])
+	bias_factor = float(constants.readline()[:-1])
+	learn_rate = float(constants.readline()[:-1])
 
 weight = []
 inputNodes = []
 
-with open("weights.txt", "r") as weights:
+try:
+	with open("weights.txt", "r") as weights:
+		inputWeight = weights.readline()
+		while inputWeight:
+			weight.append(float(inputWeight[:-1]))
+			inputWeight = weights.readline()
+except IOError:
 	for i in range(num_nodes):
-		weight[i] = weights.readline()[:-1]
+		weight.append(1.0)
 
+inputLine = trainingData.readline()
 while inputLine:
-	inputNodes, y = inputLine.split()[:-1], inputLine.split[-1]
+	inputLine = inputLine[:-1].split()
+	inputNodes = inputLine[:-1]
+	y = inputLine[-1]
 
 	Z = -bias_factor
 	for i in range(num_nodes):
-		Z += inputNodes[i] * weight[i]
+		Z += int(inputNodes[i]) * weight[i]
 
 	if Z >= 0 : h = 1
 	else : h = -1
 
 	for i in range(num_nodes):
-		weight[i] += learn_rate*(y - h)*inputNodes[i]
+		weight[i] += learn_rate*(int(y) - h)*int(inputNodes[i])
 
-	inputLine = trainingData.readline()[:-1]
+	inputLine = trainingData.readline()
 
 with open("weights.txt", "w") as weights:
 	for i in range(num_nodes):
-		weights.writeline(weight[i])
+		weights.write(str(weight[i])+'\n')
+
+trainingData.close()
