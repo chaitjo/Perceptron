@@ -1,3 +1,9 @@
+import sys
+test = False
+train = False
+if  sys.argv[1] == 'test' : test = True
+esle if sys.argv[1] == 'train' : train = True
+
 trainingData = open("training.txt", "r")
 
 with open("constants.txt", "r") as constants:
@@ -22,17 +28,20 @@ inputLine = trainingData.readline()
 while inputLine:
 	inputLine = inputLine[:-1].split()
 	inputNodes = inputLine[:-1]
-	y = inputLine[-1]
+	outputNode = inputLine[-1]
 
-	Z = -bias_factor
+	# Weighted Sum function
+	wSum = -bias_factor
 	for i in range(num_nodes):
-		Z += int(inputNodes[i]) * weight[i]
+		wSum += int(inputNodes[i]) * weight[i]
 
-	if Z >= 0 : h = 1
-	else : h = -1
+	# Activation function
+	if wSum >= 0 : prediction = 1
+	else : prediction = -1
 
+	# Weight update rule - gradient descent method
 	for i in range(num_nodes):
-		weight[i] += learn_rate*(int(y) - h)*int(inputNodes[i])
+		weight[i] += learn_rate * (int(outputNode) - prediction) * int(inputNodes[i])
 
 	inputLine = trainingData.readline()
 
