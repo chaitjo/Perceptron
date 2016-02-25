@@ -10,14 +10,14 @@ This is a Python implementation of the <a href="https://en.wikipedia.org/wiki/Pe
 * `output.txt` : Contains input vector + predicted output combinations for the test data.
 
 # Usage
-* Modify the values in `constants.txt`, `trainingData.txt` and `testingData.txt` to your own data.
+Modify the values in `constants.txt`, `trainingData.txt` and `testingData.txt` to your own data.
 
-* Train the perceptron algorithm using the following terminal command (This will create/overwrite `weights.txt`):
+Then, train the perceptron algorithm using the following terminal command (This will create/overwrite `weights.txt`):
 ```
 python perceptron.py
 ```
 
-* Run the algorithm on the test data using the following terminal command (This will create `output.txt`):
+Run the algorithm on the test data using the following terminal command (This will create `output.txt`):
 ```
 python perceptron.py test
 ```
