@@ -42,19 +42,19 @@ while inputLine:
 	# Activation function
 	if wSum >= 0 : prediction = 1
 	else : prediction = -1
-
-	if train:
-		# Weight update rule
-		# based on gradient descent method
-		for i in range(num_nodes):
-			weight[i] += learn_rate * (int(outputNode) - prediction) * int(inputNodes[i])
-
+	
 	if test:
 		# Writing prediction to output file
 		with open("res/output.txt", "a") as output:
 			for i in range(num_nodes):
 				output.write(str(inputNodes[i]) + ' ')
 			output.write(str(prediction) + '\n')
+
+	if train:
+		# Weight update rule
+		# based on gradient descent method
+		for i in range(num_nodes):
+			weight[i] += learn_rate * (int(outputNode) - prediction) * int(inputNodes[i])
 
 	inputLine = data.readline()
 
