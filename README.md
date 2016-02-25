@@ -1,7 +1,7 @@
 # Overview
 This is a Python implementation of the <a href="https://en.wikipedia.org/wiki/Perceptron#Learning_algorithm">Perceptron algorithm</a>. It is the simplest form of an artificial neural network which can be used to make binary classifications.
 
-### About the files
+##### About the files
 * `perceptron.py` : Python script used to run the algorithm.
 * `constants.txt` : Used to read constant values for the algorithm- number of input nodes, learning rate and bias factor.
 * `trainingData.txt` : Each line contains an input vector + subsequent output, used to train the perceptron.
