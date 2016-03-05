@@ -2,6 +2,7 @@
 This is a Python implementation of the <a href="https://en.wikipedia.org/wiki/Perceptron#Learning_algorithm">Perceptron algorithm</a>. It is the simplest form of an artificial neural network which can be used to make binary classifications.
 
 ![perceptron](https://raw.githubusercontent.com/ckjoshi9/Perceptron/master/images/perceptron.png)
+
 The perceptron model is an assembly of inter-connected nodes and weighted links. The output node first sums up each of its input value according to the weights of its links, compare the weighted sum against some threshold theta (the bias factor) and producse an output based on the sign of the result.
 
 ![equations](https://raw.githubusercontent.com/ckjoshi9/Perceptron/master/images/equations.png)
