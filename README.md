@@ -11,7 +11,7 @@ During training, the weight parameters are adjusted based on the <a href="https:
 
 For each training example (**x**, y), the predicted output h is computed. The weight parameters are updated based on the following rule - 
 
-_**w** = **w** + L * (y - h) * **x**_ 
+>_**w** = **w** + L * (y - h) * **x**_ 
 
 where L is the learning rate, such that L ∈ (0,1].
 
