@@ -1,7 +1,7 @@
 # Overview
 This is a Python implementation of the <a href="https://en.wikipedia.org/wiki/Perceptron#Learning_algorithm">Perceptron algorithm</a>. It is the simplest form of an artificial neural network which can be used to make binary classifications.
 
-![perceptron](https://raw.githubusercontent.com/ckjoshi9/Perceptron/master/images/perceptron.png)
+![perceptron](https://raw.githubusercontent.com/ckjoshi9/Perceptron/master/perceptron.png)
 
 ##### About the files
 * `perceptron.py` : Python script used to run the algorithm.
