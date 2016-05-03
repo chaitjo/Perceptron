@@ -3,7 +3,7 @@ This is a Python implementation of the <a href="https://en.wikipedia.org/wiki/Pe
 
 A Perceptron is used to define a hyperplane which divides the input space into two half-spaces and can be used to make binary classification.
 
-![perceptron](https://raw.githubusercontent.com/ckjoshi9/Perceptron/master/perceptron.png)
+![perceptron](https://raw.githubusercontent.com/ckjoshi9/Perceptron/master/img/perceptron.png)
 
 ##### About the files
 * `perceptron.py` : Python script used to run the algorithm.
@@ -18,7 +18,11 @@ A boolean function is a two-class classification problem- the inputs are binary 
 
 Functions like AND and OR are linearly separable and are solvable using the perceptron. A perceptron implementing the AND function can be found in the `/res` folder. The OR can also be implemented by [modifying](https://github.com/ckjoshi9/Perceptron#usage) the `trainingData.txt` file.
 
+![AND](https://raw.githubusercontent.com/ckjoshi9/Perceptron/master/img/AND.jpg)
+
 Functions like XOR cannot be solved with the simple perceptron because their graphs are not linearly separable. Hence, there is no single line/hyperplane that can divide the input space into two classes. Note that a [multilayer perceptron (MLP)](https://en.wikipedia.org/wiki/Multilayer_perceptron) can be used to solve problems like the XOR.
+
+![XOR](https://raw.githubusercontent.com/ckjoshi9/Perceptron/master/img/XOR.jpg)
 
 # Usage
 Modify the values in `constants.txt`, `trainingData.txt` and `testingData.txt` to your own data.
