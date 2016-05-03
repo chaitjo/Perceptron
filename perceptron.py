@@ -1,9 +1,12 @@
 import sys
+import os
+
 train = True
 test = False
-if len(sys.argv) >= 2 and sys.argv[1] == 'test' : 
+if len(sys.argv) >= 2 and sys.argv[1] == 'test' :
 	test = True
 	train = False
+	os.remove('res/output.txt')
 
 if test: data = open("res/testingData.txt", "r")
 else: data = open("res/trainingData.txt", "r")
@@ -41,8 +44,8 @@ while inputLine:
 
 	# Activation function
 	if wSum >= 0 : prediction = 1
-	else : prediction = -1
-	
+	else : prediction = 0
+
 	if test:
 		# Writing prediction to output file
 		with open("res/output.txt", "a") as output:
@@ -52,7 +55,7 @@ while inputLine:
 
 	if train:
 		# Weight update rule
-		# based on gradient descent method
+		# Stochastic gradient descent
 		for i in range(num_nodes):
 			weight[i] += learn_rate * (int(outputNode) - prediction) * int(inputNodes[i])
 
